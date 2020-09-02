@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableHighlight } from 'react-native'
 import { addNewTask } from '../actions';
-export class AddComponent extends Component {
+ class AddComponent extends Component {
     constructor(props) {
         super(props);
         this.state = ({
@@ -25,6 +25,8 @@ export class AddComponent extends Component {
                     onPress={(event) => {
                         if (!this.state.newTaskName.trim()) return;
                         //call click event => user "container"
+                        console.log(this.state.newTaskName);
+                        this.props.onClickAdd(this.state.newTaskName);
 
                     }}
                 >
@@ -36,7 +38,7 @@ export class AddComponent extends Component {
 }
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: 'totmato',
+        backgroundColor: 'tomato',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

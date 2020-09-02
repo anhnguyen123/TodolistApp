@@ -8,10 +8,13 @@ import { name as appName } from './app.json';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import allReducers from './reducers/index';
+import TaskManagerComponent from './components/TaskManagerComponent';
 let store = createStore(allReducers);
 //action
 const App = () => (
-    <Provider store={store} ></Provider>
+    <Provider store={store} >
+        <TaskManagerComponent/>
+    </Provider>
 )
 AppRegistry.registerComponent(appName, () => App);
 
