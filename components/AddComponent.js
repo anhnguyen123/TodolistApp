@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TextInput, TouchableHighlight } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
+
 import { addNewTask } from '../actions';
- class AddComponent extends Component {
+
+class AddComponent extends Component {
     constructor(props) {
         super(props);
         this.state = ({
             newTaskName: ''
         })
+        this.searchInput = React.createRef();
     }
     render() {
         return (
             <View style={styles.header}>
-                <TextInput style={styles.textInput}
+                <TextInput style={styles.textInput} ref={this.searchInput}
                     keyboardType='default'
                     placeholderTextColor='white'
                     placeholder='Enter task name'
@@ -19,15 +22,16 @@ import { addNewTask } from '../actions';
                     onChangeText={(text) => {
                         this.setState({ newTaskName: text });
                     }}
+                    
                 />
                 <TouchableHighlight style={styles.button}
                     underlayColor='blue'
                     onPress={(event) => {
                         if (!this.state.newTaskName.trim()) return;
                         //call click event => user "container"
-                        console.log(this.state.newTaskName);
+                        //console.log(this.state.newTaskName);
                         this.props.onClickAdd(this.state.newTaskName);
-
+                        this.searchInput.current.clear();
                     }}
                 >
                     <Text>Add</Text>

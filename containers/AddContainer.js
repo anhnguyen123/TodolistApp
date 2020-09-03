@@ -10,8 +10,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClickAdd: (inputTaskName) => {
-            dispatch(addNewTask(inputTaskName));
-            
+            dispatch(addNewTask(inputTaskName));            
         }
     }
 }
